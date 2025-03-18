@@ -1,0 +1,50 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="200" cy="200" r="190" fill="#F0FDF4" stroke="#10B981" stroke-width="4"/>
+  
+  <!-- Plate -->
+  <ellipse cx="200" cy="230" rx="120" ry="30" fill="#E2E8F0" stroke="#94A3B8" stroke-width="2"/>
+  
+  <!-- Healthy Food Items -->
+  <!-- Salad -->
+  <path d="M160 180C160 180 150 200 170 210C190 220 210 200 210 200C210 200 190 170 160 180Z" fill="#84CC16" stroke="#65A30D" stroke-width="2"/>
+  <path d="M180 190C180 190 170 200 180 210C190 220 200 210 200 210C200 210 190 190 180 190Z" fill="#BEF264" stroke="#84CC16" stroke-width="1"/>
+  
+  <!-- Apple -->
+  <circle cx="240" cy="190" r="20" fill="#EF4444" stroke="#B91C1C" stroke-width="2"/>
+  <path d="M240 170C240 170 245 160 250 165" stroke="#422006" stroke-width="2"/>
+  <path d="M235 175L245 185" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Carrot -->
+  <path d="M130 190L150 220" stroke="#F97316" stroke-width="10" stroke-linecap="round"/>
+  <path d="M130 180C130 180 125 175 120 180C115 185 125 190 125 190" fill="#84CC16" stroke="#65A30D" stroke-width="1"/>
+  
+  <!-- Fork -->
+  <path d="M270 230L290 170" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M290 170L300 180" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M290 170L280 180" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M290 170L290 160" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Health Score Gauge -->
+  <path d="M320 120A120 120 0 0 0 200 240" stroke="#E2E8F0" stroke-width="8" stroke-linecap="round"/>
+  <path d="M320 120A120 120 0 0 0 250 245" stroke="#10B981" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Stars (Gamification) -->
+  <path d="M100 100L105 90L110 100L120 102L110 110L112 120L100 115L88 120L90 110L80 102L90 100L100 100Z" fill="#FACC15" stroke="#EAB308" stroke-width="1"/>
+  <path d="M320 80L323 73L326 80L333 81L326 86L327 93L320 90L313 93L314 86L307 81L314 80L320 80Z" fill="#FACC15" stroke="#EAB308" stroke-width="1"/>
+  <path d="M80 280L83 273L86 280L93 281L86 286L87 293L80 290L73 293L74 286L67 281L74 280L80 280Z" fill="#FACC15" stroke="#EAB308" stroke-width="1"/>
+  
+  <!-- UberEats Integration Symbol -->
+  <rect x="310" y="280" width="40" height="40" rx="8" fill="#000000"/>
+  <path d="M325 290L335 290L335 310L325 310L325 290Z" fill="#FFFFFF"/>
+  <path d="M320 300L330 300" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+  <path d="M330 300L340 300" stroke="#06B6D4" stroke-width="4" stroke-linecap="round"/>
+  
+  <!-- Text: AllyRecommends -->
+  <path d="M130 320L140 300L150 320M140 315L145 315M160 300L160 320M160 310L170 310M180 300C180 300 190 300 190 310C190 320 180 320 180 320M200 300L210 320L220 300M230 300L230 320M230 310L240 310M250 300C250 300 260 300 260 310C260 320 250 320 250 320M270 300L270 320M270 310L280 310" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Health Level Indicator -->
+  <circle cx="200" cy="120" r="30" fill="#FFFFFF" stroke="#10B981" stroke-width="3"/>
+  <text x="200" y="125" font-family="Arial" font-size="20" fill="#10B981" text-anchor="middle">85</text>
+  <text x="200" y="140" font-family="Arial" font-size="8" fill="#10B981" text-anchor="middle">HEALTH SCORE</text>
+</svg>

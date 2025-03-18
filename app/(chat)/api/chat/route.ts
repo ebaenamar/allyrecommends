@@ -25,6 +25,7 @@ import { requestSuggestions } from '@/lib/ai/tools/request-suggestions';
 import { getWeather } from '@/lib/ai/tools/get-weather';
 import { isProductionEnvironment } from '@/lib/constants';
 import { myProvider } from '@/lib/ai/providers';
+import { getUberEatsRecommendations, linkUberEatsAccount, getHealthierAlternatives } from '@/lib/ai/tools/ubereats';
 
 export const maxDuration = 60;
 
@@ -94,11 +95,17 @@ export async function POST(request: Request) {
                   'createDocument',
                   'updateDocument',
                   'requestSuggestions',
+                  'getUberEatsRecommendations',
+                  'linkUberEatsAccount',
+                  'getHealthierAlternatives',
                 ],
           experimental_transform: smoothStream({ chunking: 'word' }),
           experimental_generateMessageId: generateUUID,
           tools: {
             getWeather,
+            getUberEatsRecommendations: getUberEatsRecommendations({ session, dataStream }),
+            linkUberEatsAccount: linkUberEatsAccount({ session, dataStream }),
+            getHealthierAlternatives: getHealthierAlternatives({ session, dataStream }),
             createDocument: createDocument({ session, dataStream }),
             updateDocument: updateDocument({ session, dataStream }),
             requestSuggestions: requestSuggestions({
