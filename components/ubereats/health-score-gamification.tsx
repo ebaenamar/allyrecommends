@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { Badge } from '@/components/ui/badge';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface HealthScoreGamificationProps {
@@ -30,15 +29,15 @@ export function HealthScoreGamification({
   achievements,
   onShareScore,
 }: HealthScoreGamificationProps) {
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [selectedAchievement, setSelectedAchievement] = useState<Achievement | null>(null);
+  const [showConfetti, setShowConfetti] = React.useState(false);
+  const [selectedAchievement, setSelectedAchievement] = React.useState<Achievement | null>(null);
 
   // Determine level based on score
   const level = Math.floor(currentScore / 10) + 1;
   const progressToNextLevel = (currentScore % 10) * 10; // Convert to percentage
 
   // Check if any achievements were recently unlocked
-  useEffect(() => {
+  React.useEffect(() => {
     const recentlyUnlocked = achievements.find(a => a.unlocked && a.progress === a.maxProgress);
     if (recentlyUnlocked) {
       setShowConfetti(true);
@@ -124,9 +123,9 @@ export function HealthScoreGamification({
                 </div>
               )}
               {achievement.unlocked && (
-                <Badge className="absolute top-2 right-2 bg-green-500">
+                <span className="absolute top-2 right-2 inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold bg-green-500 text-white">
                   ✓
-                </Badge>
+                </span>
               )}
             </motion.div>
           ))}
@@ -141,7 +140,7 @@ export function HealthScoreGamification({
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
               className="bg-white rounded-xl p-6 max-w-md w-full"
             >
               <div className="text-center mb-4">
@@ -176,33 +175,33 @@ export function HealthScoreGamification({
       {showConfetti && (
         <div className="fixed inset-0 pointer-events-none z-50">
           {Array.from({ length: 100 }).map((_, i) => {
-            const size = Math.random() * 10 + 5;
-            const left = Math.random() * 100;
-            const animationDuration = Math.random() * 3 + 2;
-            const delay = Math.random() * 0.5;
-            const color = [
-              '#10B981', // green
-              '#3B82F6', // blue
-              '#F59E0B', // amber
-              '#EC4899', // pink
-              '#8B5CF6', // purple
+            const confettiSize = Math.random() * 10 + 5;
+            const confettiLeft = Math.random() * 100;
+            const confettiDuration = Math.random() * 3 + 2;
+            const confettiDelay = Math.random() * 0.5;
+            const confettiColor = [
+              "#10B981", // green
+              "#3B82F6", // blue
+              "#F59E0B", // amber
+              "#EC4899", // pink
+              "#8B5CF6"  // purple
             ][Math.floor(Math.random() * 5)];
             
             return (
               <motion.div
                 key={i}
-                initial={{ y: -20, x: `${left}vw`, opacity: 1 }}
+                initial={{ y: -20, x: `${confettiLeft}vw`, opacity: 1 }}
                 animate={{ y: '100vh', opacity: 0 }}
                 transition={{ 
-                  duration: animationDuration, 
-                  delay,
+                  duration: confettiDuration, 
+                  delay: confettiDelay,
                   ease: 'easeOut'
                 }}
                 style={{ 
                   position: 'absolute',
-                  width: size,
-                  height: size,
-                  backgroundColor: color,
+                  width: `${confettiSize}px`,
+                  height: `${confettiSize}px`,
+                  backgroundColor: confettiColor,
                   borderRadius: '50%',
                 }}
               />
@@ -216,8 +215,8 @@ export function HealthScoreGamification({
 
 // Example usage component with mock data
 export function HealthScoreGamificationDemo() {
-  const [score, setScore] = useState(75);
-  const [achievements, setAchievements] = useState<Achievement[]>([
+  const [score, setScore] = React.useState(75);
+  const [achievements, setAchievements] = React.useState<Achievement[]>([
     {
       id: '1',
       title: 'Health Novice',
@@ -294,7 +293,7 @@ export function HealthScoreGamificationDemo() {
 
   // Demo function to increment score
   const incrementScore = () => {
-    setScore(prev => Math.min(prev + 5, 100));
+    setScore((prev: number) => Math.min(prev + 5, 100));
     
     // Update an achievement for demo purposes
     if (score >= 80) {
