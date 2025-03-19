@@ -1,8 +1,7 @@
 import React from 'react';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 
 interface UberEatsRecommendationProps {
   recommendations: {
@@ -53,20 +52,23 @@ export function UberEatsRecommendations({ recommendations }: UberEatsRecommendat
           <Card key={`${rec.restaurant.id}-${rec.menuItem.id}`} className="overflow-hidden">
             <div className="relative h-48 w-full">
               {rec.menuItem.imageUrl ? (
-                <img 
-                  src={rec.menuItem.imageUrl} 
-                  alt={rec.menuItem.name} 
-                  className="h-full w-full object-cover"
-                />
+                <div className="relative h-full w-full">
+                  <Image 
+                    src={rec.menuItem.imageUrl} 
+                    alt={rec.menuItem.name} 
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               ) : (
                 <div className="h-full w-full bg-muted flex items-center justify-center">
                   <span className="text-muted-foreground">No image available</span>
                 </div>
               )}
               <div className="absolute top-2 right-2">
-                <Badge variant="secondary" className="bg-green-100 text-green-800">
+                <span className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-green-100 text-green-800">
                   Health Score: {rec.healthScore}/10
-                </Badge>
+                </span>
               </div>
             </div>
             <CardHeader>
@@ -79,12 +81,12 @@ export function UberEatsRecommendations({ recommendations }: UberEatsRecommendat
               </p>
               <div className="mt-2 flex flex-wrap gap-1">
                 {rec.menuItem.tags.map((tag) => (
-                  <Badge key={tag} variant="outline">
+                  <span key={tag} className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold text-foreground">
                     {tag}
-                  </Badge>
+                  </span>
                 ))}
               </div>
-              <Separator className="my-4" />
+              <hr className="my-4 border-t border-gray-200" />
               <div className="flex justify-between items-center">
                 <div>
                   <p className="text-sm font-medium">Price</p>
@@ -118,7 +120,7 @@ interface UberEatsAccountLinkProps {
 export function UberEatsAccountLink({ onLinkAccount, isLinked }: UberEatsAccountLinkProps) {
   const [userId, setUserId] = React.useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (userId) {
       onLinkAccount(userId);
@@ -161,7 +163,7 @@ export function UberEatsAccountLink({ onLinkAccount, isLinked }: UberEatsAccount
               id="userId"
               type="text"
               value={userId}
-              onChange={(e) => setUserId(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUserId(e.target.value)}
               className="w-full px-3 py-2 border border-gray-300 rounded-md"
               placeholder="Enter your UberEats User ID"
               required
@@ -235,8 +237,8 @@ export function HealthScore({ score, history }: HealthScoreProps) {
             {score > 70
               ? "Great job! You're making healthy choices."
               : score > 40
-              ? "You're on the right track. Keep it up!"
-              : "There's room for improvement in your food choices."}
+              ? "You&apos;re on the right track. Keep it up!"
+              : "There&apos;s room for improvement in your food choices."}
           </p>
         </div>
         

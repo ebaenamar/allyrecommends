@@ -1,8 +1,8 @@
 import React from 'react';
+import Image from 'next/image';
 import { UberEatsRecommendations, HealthScore } from './ubereats-recommendations';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface UberEatsChatIntegrationProps {
   recommendations: any[];
@@ -20,23 +20,20 @@ export function UberEatsChatIntegration({
   return (
     <Card className="w-full max-w-3xl mx-auto my-4">
       <CardContent className="p-4">
-        <Tabs defaultValue="recommendations">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="recommendations">Food Recommendations</TabsTrigger>
-            <TabsTrigger value="health">Health Score</TabsTrigger>
-          </TabsList>
-          <TabsContent value="recommendations" className="mt-4">
+        <div>
+          <div className="grid w-full grid-cols-2 bg-muted p-1 rounded-md">
+            <button className="px-3 py-1.5 rounded-sm bg-background text-foreground shadow-sm">Food Recommendations</button>
+            <button className="px-3 py-1.5 rounded-sm text-muted-foreground">Health Score</button>
+          </div>
+          <div className="mt-4">
             <UberEatsRecommendations recommendations={recommendations} />
             <div className="mt-4 flex justify-center">
               <Button onClick={onRequestMoreRecommendations}>
                 Get More Recommendations
               </Button>
             </div>
-          </TabsContent>
-          <TabsContent value="health" className="mt-4">
-            <HealthScore score={healthScore} history={healthHistory} />
-          </TabsContent>
-        </Tabs>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );
@@ -56,11 +53,14 @@ export function UberEatsRecommendationInChat({
     <Card className="w-full max-w-md my-2">
       <div className="relative h-32 w-full">
         {recommendation.menuItem.imageUrl ? (
-          <img 
-            src={recommendation.menuItem.imageUrl} 
-            alt={recommendation.menuItem.name} 
-            className="h-full w-full object-cover rounded-t-lg"
-          />
+          <div className="relative h-full w-full">
+            <Image 
+              src={recommendation.menuItem.imageUrl} 
+              alt={recommendation.menuItem.name} 
+              fill
+              className="object-cover rounded-t-lg"
+            />
+          </div>
         ) : (
           <div className="h-full w-full bg-muted flex items-center justify-center rounded-t-lg">
             <span className="text-muted-foreground">No image available</span>
