@@ -53,7 +53,7 @@ export function UberEatsRecommendationInChat({
     <Card className="w-full max-w-md my-2">
       <div className="relative h-32 w-full">
         {recommendation.menuItem.imageUrl ? (
-          <div className="relative h-full w-full">
+          <div className="relative size-full">
             <Image 
               src={recommendation.menuItem.imageUrl} 
               alt={recommendation.menuItem.name} 
@@ -62,7 +62,7 @@ export function UberEatsRecommendationInChat({
             />
           </div>
         ) : (
-          <div className="h-full w-full bg-muted flex items-center justify-center rounded-t-lg">
+          <div className="size-full bg-muted flex items-center justify-center rounded-t-lg">
             <span className="text-muted-foreground">No image available</span>
           </div>
         )}

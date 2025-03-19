@@ -207,8 +207,8 @@ export function HealthScore({ score, history }: HealthScoreProps) {
       </CardHeader>
       <CardContent>
         <div className="flex flex-col items-center justify-center space-y-2">
-          <div className="relative h-32 w-32 flex items-center justify-center">
-            <svg viewBox="0 0 100 100" className="h-full w-full">
+          <div className="relative size-32 flex items-center justify-center">
+            <svg viewBox="0 0 100 100" className="size-full">
               <circle
                 cx="50"
                 cy="50"
