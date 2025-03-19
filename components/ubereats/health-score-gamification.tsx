@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
+import { Progress } from '../../components/ui/progress';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface HealthScoreGamificationProps {
@@ -191,18 +191,18 @@ export function HealthScoreGamification({
               <motion.div
                 key={i}
                 initial={{ y: -20, x: `${confettiLeft}vw`, opacity: 1 }}
-                animate={{ y: '100vh', opacity: 0 }}
+                animate={{ y: "100vh", opacity: 0 }}
                 transition={{ 
                   duration: confettiDuration, 
                   delay: confettiDelay,
-                  ease: 'easeOut'
+                  ease: "easeOut"
                 }}
                 style={{ 
-                  position: 'absolute',
+                  position: "absolute",
                   width: `${confettiSize}px`,
                   height: `${confettiSize}px`,
                   backgroundColor: confettiColor,
-                  borderRadius: '50%',
+                  borderRadius: "50%",
                 }}
               />
             );
@@ -319,7 +319,7 @@ export function HealthScoreGamificationDemo() {
         weeklyGoal={100}
         streakDays={8}
         achievements={achievements}
-        onShareScore={() => alert('Sharing score functionality would go here')}
+        onShareScore={() => alert("Sharing score functionality would go here")}
       />
       
       <div className="mt-6 text-center">
