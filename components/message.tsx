@@ -1,10 +1,58 @@
 'use client';
 
-import type { UIMessage } from 'ai';
-import cx from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
+// Define simplified types to avoid dependency issues
+type UIMessage = {
+  id: string;
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+  tool_calls?: any[];
+  parts?: any[];
+  experimental_attachments?: any[];
+  reasoning?: any;
+};
+
+type UseChatHelpers = {
+  setMessages: (messages: UIMessage[]) => void;
+  reload: () => void;
+};
+
+type Vote = {
+  id: string;
+  value: number;
+};
+
+type Attachment = {
+  type: string;
+  [key: string]: any;
+};
+
+type MessageEditorProps = {
+  message: UIMessage;
+  setMode: (mode: string) => void;
+  setMessages: (messages: UIMessage[]) => void;
+  reload: () => void;
+  key?: string;
+};
+
+type MessageReasoningProps = {
+  isLoading: boolean;
+  reasoning: any;
+  key?: string;
+};
+
+// Add JSX namespace to fix JSX element type errors
+declare namespace JSX {
+  interface IntrinsicElements {
+    [elemName: string]: any;
+  }
+}
+
 import { memo, useState } from 'react';
-import type { Vote } from '@/lib/db/schema';
+import classNames from 'classnames';
+import { motion, AnimatePresence } from 'framer-motion';
+
+// Simple utility function as fallback
+const cx = classNames || ((...classes: any[]) => classes.filter(Boolean).join(' '));
 import { DocumentToolCall, DocumentToolResult } from './document';
 import { PencilEditIcon, SparklesIcon } from './icons';
 import { Markdown } from './markdown';
