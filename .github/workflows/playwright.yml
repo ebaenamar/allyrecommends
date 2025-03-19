@@ -62,7 +62,15 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
 
       - name: Run Playwright tests
-        run: pnpm test
+        run: |
+          if [ -z "$POSTGRES_URL" ]; then
+            echo "POSTGRES_URL is not set, skipping tests that require database connection"
+            # Run with a flag or environment variable to skip database tests
+            SKIP_DB_TESTS=true pnpm test
+          else
+            echo "Running all tests including database tests"
+            pnpm test
+          fi
 
       - uses: actions/upload-artifact@v4
         if: always() && !cancelled()

@@ -157,25 +157,15 @@ const PurePreviewMessage = ({
                     <div
                       key={toolCallId}
                       className={cx({
-                        skeleton: ['getWeather'].includes(toolName),
+                        skeleton: false,
                       })}
                     >
-                      {toolName === 'getWeather' ? (
-                        <Weather />
-                      ) : toolName === 'createDocument' ? (
-                        <DocumentPreview isReadonly={isReadonly} args={args} />
-                      ) : toolName === 'updateDocument' ? (
-                        <DocumentToolCall
-                          type="update"
-                          args={args}
-                          isReadonly={isReadonly}
-                        />
-                      ) : toolName === 'requestSuggestions' ? (
-                        <DocumentToolCall
-                          type="request-suggestions"
-                          args={args}
-                          isReadonly={isReadonly}
-                        />
+                      {toolName === 'getUberEatsRecommendations' ? (
+                        <pre>{JSON.stringify(args, null, 2)}</pre>
+                      ) : toolName === 'getHealthierAlternatives' ? (
+                        <pre>{JSON.stringify(args, null, 2)}</pre>
+                      ) : toolName === 'linkUberEatsAccount' ? (
+                        <pre>{JSON.stringify(args, null, 2)}</pre>
                       ) : null}
                     </div>
                   );
@@ -186,25 +176,12 @@ const PurePreviewMessage = ({
 
                   return (
                     <div key={toolCallId}>
-                      {toolName === 'getWeather' ? (
-                        <Weather weatherAtLocation={result} />
-                      ) : toolName === 'createDocument' ? (
-                        <DocumentPreview
-                          isReadonly={isReadonly}
-                          result={result}
-                        />
-                      ) : toolName === 'updateDocument' ? (
-                        <DocumentToolResult
-                          type="update"
-                          result={result}
-                          isReadonly={isReadonly}
-                        />
-                      ) : toolName === 'requestSuggestions' ? (
-                        <DocumentToolResult
-                          type="request-suggestions"
-                          result={result}
-                          isReadonly={isReadonly}
-                        />
+                      {toolName === 'getUberEatsRecommendations' ? (
+                        <pre>{JSON.stringify(result, null, 2)}</pre>
+                      ) : toolName === 'getHealthierAlternatives' ? (
+                        <pre>{JSON.stringify(result, null, 2)}</pre>
+                      ) : toolName === 'linkUberEatsAccount' ? (
+                        <pre>{JSON.stringify(result, null, 2)}</pre>
                       ) : (
                         <pre>{JSON.stringify(result, null, 2)}</pre>
                       )}
