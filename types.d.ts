@@ -20,3 +20,10 @@ declare module 'classnames' {
   const classNames: (...args: any[]) => string;
   export default classNames;
 }
+
+// Add JSX IntrinsicElements interface to fix 'JSX element implicitly has type any' errors
+declare namespace JSX {
+  interface IntrinsicElements {
+    [elemName: string]: any;
+  }
+}
